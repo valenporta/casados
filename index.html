@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Dos - Agencia creativa</title>
+<style>
+:root {
+  --color-bg-page: #ffffff;
+  --color-bg-section-alt: #f7f8fb;
+  --color-text-primary: #1f1f1f;
+  --color-text-secondary: #5b6473;
+  --color-accent-primary: #ff6b4a;
+  --color-pill-bg: #fdfdfd;
+  --color-pill-border: #e2e4ea;
+  --color-border-input: #d9dce3;
+  --color-footer-bg: #f0f1f5;
+  --color-link: #ff6b4a;
+}
+* {box-sizing: border-box; margin: 0; padding: 0;}
+body {font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--color-bg-page); color: var(--color-text-primary); line-height: 1.6;}
+a {text-decoration: none; color: var(--color-link);}
+.container {max-width: 1200px; margin: 0 auto; padding: 0 28px;}
+header {position: sticky; top: 0; z-index: 1000; background: var(--color-bg-page); box-shadow: 0 1px 6px rgba(0,0,0,0.05);}
+.navbar {display: flex; align-items: center; justify-content: space-between; padding: 18px 0;}
+.logo {font-weight: 700; font-size: 18px; letter-spacing: 0.4px;}
+.nav-links {display: flex; gap: 20px; align-items: center;}
+.nav-links a {font-size: 14px; color: var(--color-text-primary); transition: color 0.2s ease;}
+.nav-links a:hover {color: var(--color-accent-primary);}
+.hamburger {display: none; flex-direction: column; gap: 4px; cursor: pointer;}
+.hamburger span {width: 22px; height: 2px; background: var(--color-text-primary);}
+.btn {display: inline-flex; align-items: center; justify-content: center; padding: 12px 20px; border-radius: 999px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s ease; font-size: 15px;}
+.btn-primary {background: var(--color-accent-primary); color: #fff;}
+.btn-primary:hover {opacity: 0.92;}
+.btn-secondary {background: transparent; color: var(--color-accent-primary); border: 1.5px solid var(--color-accent-primary);}
+.section {padding: 88px 0;}
+.overline {text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; color: var(--color-text-secondary); font-weight: 600;}
+h1 {font-size: 48px; line-height: 1.1; margin: 14px 0 22px;}
+h2 {font-size: 32px; margin-bottom: 20px; font-weight: 700;}
+h3 {font-size: 22px; margin-bottom: 10px; font-weight: 600;}
+p {color: var(--color-text-secondary); font-size: 15px;}
+.hero {display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 44px; align-items: center;}
+.card {background: #fff; border: 1px solid #eceef3; border-radius: 16px; padding: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.04);}
+.hero-card {padding: 28px;}
+.hero-card h3 {margin-bottom: 12px;}
+.hero-card p {margin-bottom: 16px;}
+.section.alt {background: var(--color-bg-section-alt);}
+.pills {display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px;}
+.pill {padding: 10px 16px; border: 1px solid var(--color-pill-border); border-radius: 999px; background: var(--color-pill-bg); font-size: 14px; color: var(--color-text-primary); cursor: pointer; transition: all 0.2s ease;}
+.pill.active {background: var(--color-accent-primary); color: #fff; border-color: var(--color-accent-primary);}
+.services-grid {margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;}
+.service-card p {margin-bottom: 16px;}
+.service-card a {font-weight: 600; font-size: 14px;}
+.about {display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: start;}
+.team {display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 20px;}
+.team .member {padding: 16px; border: 1px solid #eceef3; border-radius: 12px; background: #fff; font-weight: 600;}
+.portfolio-filters {display: flex; gap: 12px; margin: 12px 0 28px; flex-wrap: wrap;}
+.portfolio-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;}
+.project-card {border: 1px solid #eceef3; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.03);}
+.project-thumb {background: linear-gradient(135deg, rgba(255,107,74,0.12), rgba(45,70,255,0.08)); height: 160px;}
+.project-card .content {padding: 18px;}
+.project-card .category {font-size: 13px; color: var(--color-text-secondary); margin-top: 6px;}
+.contact {display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; align-items: start;}
+.form-group {display: flex; flex-direction: column; gap: 8px;}
+.form-row {display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;}
+input, textarea {padding: 12px 14px; border-radius: 10px; border: 1px solid var(--color-border-input); font-size: 14px; background: #fff; color: var(--color-text-primary);}
+textarea {min-height: 140px; resize: vertical;}
+input:focus, textarea:focus {outline: none; border-color: var(--color-accent-primary); box-shadow: 0 0 0 3px rgba(255,107,74,0.15);}
+footer {background: var(--color-footer-bg); padding: 50px 0;}
+.footer-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start;}
+.footer-grid h4 {font-size: 16px; margin-bottom: 12px; font-weight: 700;}
+.footer-grid a, .footer-grid p {font-size: 14px; color: var(--color-text-primary); line-height: 1.7;}
+@media (max-width: 992px) {
+  h1 {font-size: 42px;}
+  h2 {font-size: 30px;}
+  .hero {grid-template-columns: 1fr;}
+  .services-grid, .portfolio-grid {grid-template-columns: repeat(2, 1fr);}
+  .about, .contact {grid-template-columns: 1fr;}
+  header {position: sticky;}
+}
+@media (max-width: 768px) {
+  .container {padding: 0 20px;}
+  h1 {font-size: 36px;}
+  h2 {font-size: 28px;}
+  .navbar {padding: 14px 0;}
+  .nav-links {position: absolute; top: 64px; right: 20px; flex-direction: column; background: #fff; border: 1px solid #eceef3; padding: 14px 16px; border-radius: 12px; width: 200px; display: none; box-shadow: 0 12px 30px rgba(0,0,0,0.08);}
+  .nav-links.show {display: flex;}
+  .hamburger {display: flex;}
+  .services-grid, .portfolio-grid {grid-template-columns: 1fr;}
+  .form-row {grid-template-columns: 1fr;}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container navbar">
+    <div class="logo">Casa Dos</div>
+    <nav class="nav-links" id="navMenu">
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre">Sobre nosotras</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="hamburger" id="navToggle" aria-label="Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="section hero" id="home">
+    <div class="container hero">
+      <div>
+        <div class="overline">Agencia creativa multidisciplinaria</div>
+        <h1>Diseño. Estrategia. Impacto.</h1>
+        <p>Soluciones digitales que combinan estética, claridad y resultados medibles para tu marca.</p>
+        <button class="btn btn-primary" aria-label="Explora">Explora</button>
+      </div>
+      <div>
+        <div class="card hero-card">
+          <div class="overline">Servicio destacado</div>
+          <h3>Diseño web</h3>
+          <p>Experiencias digitales centradas en el usuario que reflejan la esencia de tu marca.</p>
+          <a href="#servicios">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section alt" id="servicios">
+    <div class="container">
+      <h2>Nuestras soluciones</h2>
+      <p>Conectamos estrategia, creatividad y tecnología para impulsar marcas en cada punto de contacto.</p>
+      <div class="pills">
+        <div class="pill">Diagnóstico y Estrategia</div>
+        <div class="pill">Branding</div>
+        <div class="pill">Gestión de Redes Sociales</div>
+        <div class="pill">Growth Marketing</div>
+        <div class="pill">Diseño web</div>
+        <div class="pill">Marketing digital</div>
+      </div>
+      <div class="services-grid">
+        <div class="card service-card">
+          <h3>Diseño web</h3>
+          <p>Interfaces elegantes y funcionales con foco en conversión y velocidad.</p>
+          <a href="#contacto">Ver más</a>
+        </div>
+        <div class="card service-card">
+          <h3>Branding único</h3>
+          <p>Identidades visuales coherentes que transmiten la personalidad de tu negocio.</p>
+          <a href="#contacto">Ver más</a>
+        </div>
+        <div class="card service-card">
+          <h3>Marketing digital</h3>
+          <p>Estrategias multicanal para captar, nutrir y fidelizar a tus audiencias clave.</p>
+          <a href="#contacto">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="sobre">
+    <div class="container about">
+      <div>
+        <div class="overline">Agencia creativa multidisciplinaria</div>
+        <h2>Creamos sitios visualmente atractivos que impulsan resultados.</h2>
+        <p>Diseñamos experiencias memorables que unen estrategia, storytelling y performance para que tu marca crezca de manera sostenible.</p>
+      </div>
+      <div>
+        <h3>Equipo</h3>
+        <div class="team">
+          <div class="member">Natalia Rivarola</div>
+          <div class="member">Marcela Pagan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section alt" id="portafolio">
+    <div class="container">
+      <h2>Portafolio</h2>
+      <div class="portfolio-filters">
+        <div class="pill active">Branding único</div>
+        <div class="pill">Marketing digital</div>
+        <div class="pill">Diseño web</div>
+      </div>
+      <div class="portfolio-grid">
+        <div class="project-card">
+          <div class="project-thumb"></div>
+          <div class="content">
+            <h3>Nombre proyecto</h3>
+            <div class="category">Branding único</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb"></div>
+          <div class="content">
+            <h3>Nombre proyecto</h3>
+            <div class="category">Marketing digital</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb"></div>
+          <div class="content">
+            <h3>Nombre proyecto</h3>
+            <div class="category">Diseño web</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb"></div>
+          <div class="content">
+            <h3>Nombre proyecto</h3>
+            <div class="category">Branding único</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb"></div>
+          <div class="content">
+            <h3>Nombre proyecto</h3>
+            <div class="category">Marketing digital</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb"></div>
+          <div class="content">
+            <h3>Nombre proyecto</h3>
+            <div class="category">Diseño web</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 32px;">
+        <button class="btn btn-secondary">Ver más</button>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="contacto">
+    <div class="container contact">
+      <div>
+        <h2>Trabajemos juntos</h2>
+        <p>¿En que podemos ayudarte?</p>
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Tu email">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" placeholder="Cuéntanos sobre tu proyecto"></textarea>
+        </div>
+        <div style="margin-top: 18px;">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="logo">Casa Dos</div>
+      <p>Agencia creativa multidisciplinaria enfocada en impacto y resultados.</p>
+    </div>
+    <div>
+      <h4>Navegación</h4>
+      <a href="#home">Home</a><br>
+      <a href="#servicios">Servicios</a><br>
+      <a href="#portafolio">Portafolio</a><br>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <p>casadosagencia@gmail.com</p>
+      <p>Whatsapp</p>
+      <p>Linkedin</p>
+    </div>
+  </div>
+</footer>
+<script>
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+navToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+});
+</script>
+</body>
+</html>
